@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hilton"
+    }
+  },
+  "defaultProject": "hilton",
+  "cli": {
+    "analytics": false
+  }
 }

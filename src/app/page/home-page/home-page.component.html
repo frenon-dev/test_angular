@@ -1,0 +1,50 @@
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-12">
+        <p>Reservaciones </p>
+        <div class="loader" *ngIf="loading"></div>
+        <div class="card" *ngIf="!loading">
+            <div class="form-inline p-2 pull-rigth my-2 my-lg-0">
+                <input [(ngModel)]="search" #box (blur)="onSearch('1')" (keyup.enter)="onSearch('1')"
+                    class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+
+            <div class="table-responsive p-2" style="height: 350px;">
+                <table class="table table-striped" style="font-size: 12px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Confirmación No</th>
+                            <th scope="col">Lleganda</th>
+                            <th scope="col">Salida</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data">
+                            <th scope="row">{{item.confirmationNo}}</th>
+                            <td>{{item.arrival}}</td>
+                            <td>{{item.departure}}</td>
+                            <td>{{item.resvStatus}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: right" class="p-2">
+                <span>Pagina {{currentPage}} de {{totalPage}}</span>
+                <nav>
+                    <ul class="pagination float-right pagination-sm">
+                        <li class="page-item">
+                            <button class="page-link" (click)="onPaginate(currentPage - 1)">
+                                <i class=" material-icons" style="font-size: 12px;">arrow_back</i>
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link" (click)="onPaginate(currentPage + 1)">
+                                <i class=" material-icons" style="font-size: 12px;">arrow_forward</i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
